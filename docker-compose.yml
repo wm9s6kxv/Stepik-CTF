@@ -1,0 +1,52 @@
+version: '3'
+
+services:
+
+  big:
+    image: 15elrasc/big
+    networks:
+      bot_mynetwork:
+        ipv4_address: 172.21.0.10
+
+
+  lfi-go:
+    image: 15elrasc/lfi-go
+    networks:
+      bot_mynetwork:
+        ipv4_address: 172.21.0.20
+
+
+  mitm:
+    image: 15elrasc/mitm
+    networks:
+      bot_mynetwork:
+        ipv4_address: 172.21.0.30
+
+
+  sql-test:
+    image: 15elrasc/sql-test
+    networks:
+      bot_mynetwork:
+        ipv4_address: 172.21.0.40
+
+  directsearch:
+    image: 15elrasc/directsearch
+    networks:
+      bot_mynetwork:
+        ipv4_address: 172.21.0.50
+  
+  trueorfalse:
+    image: 15elrasc/trueorfalse
+    networks:
+      bot_mynetwork:
+        ipv4_address: 172.21.0.60
+
+
+
+networks:
+  bot_mynetwork:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.21.0.0/24
+          gateway: 172.21.0.1
